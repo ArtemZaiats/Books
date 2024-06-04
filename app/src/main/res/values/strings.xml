@@ -8,4 +8,7 @@
     <string name="you_will_also_like">You will also like</string>
     <string name="read_now">Read Now</string>
     <string name="library">Library</string>
+    <string name="genre">Genre</string>
+    <string name="back_icon">back icon</string>
+    <string name="banner_description">banner</string>
 </resources>

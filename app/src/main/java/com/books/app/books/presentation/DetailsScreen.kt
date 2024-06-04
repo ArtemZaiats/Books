@@ -1,6 +1,5 @@
 package com.books.app.books.presentation
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,19 +22,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -58,7 +48,6 @@ import com.books.app.books.presentation.components.BooksList
 import com.books.app.books.presentation.model.BookModel
 import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
     modifier: Modifier = Modifier,
@@ -84,23 +73,7 @@ fun DetailsScreen(
             contentScale = ContentScale.Crop
         )
         Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .padding(top = 16.dp, start = 16.dp)
-                    .size(40.dp)
-                    .clip(shape = CircleShape)
-                    .clickable { onBackClick() }
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_arrow_back),
-                    contentDescription = "back icon",
-                    modifier = Modifier.size(24.dp),
-                    alignment = Alignment.Center,
-                    colorFilter = ColorFilter.tint(color = Color.White)
-                )
-            }
+            DetailsTopBar(onBackClick)
 
             DetailsHeader(
                 modifier = Modifier
@@ -111,6 +84,27 @@ fun DetailsScreen(
                 pagerState = pagerState
             )
         }
+    }
+}
+
+@Composable
+private fun DetailsTopBar(onBackClick: () -> Unit) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(top = 16.dp, start = 16.dp)
+            .size(40.dp)
+            .clip(shape = CircleShape)
+            .clickable { onBackClick() }
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_arrow_back),
+            contentDescription = stringResource(R.string.back_icon),
+            modifier = Modifier.size(24.dp),
+            alignment = Alignment.Center,
+            colorFilter = ColorFilter.tint(color = Color.White)
+        )
     }
 }
 
@@ -161,7 +155,7 @@ fun DetailsHeader(
             ) {
                 AsyncImage(
                     model = books[index].coverUrl,
-                    contentDescription = "banner",
+                    contentDescription = stringResource(R.string.banner_description),
                     modifier = Modifier
                         .width(200.dp)
                         .height(250.dp)
@@ -198,7 +192,6 @@ fun DetailsHeader(
             recommendedBooks = recommendedBooks,
             onBookClick = onBookClick
         )
-
     }
 }
 
@@ -309,7 +302,7 @@ fun BookDetails(
                     )
                 )
                 Text(
-                    text = "Genre",
+                    text = stringResource(R.string.genre),
                     style = TextStyle(
                         color = Color(0xffD9D5D6),
                         fontSize = 12.sp,

@@ -59,7 +59,6 @@ fun BookItem(
                 fontWeight = FontWeight(600),
                 fontSize = 16.sp,
                 color = textColor
-//                color = Color(0xFFFFFFFF).copy(alpha = 0.7f),
             ),
             modifier = Modifier
                 .width(120.dp)
