@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>json_data</key>
+        <value>{ "books": [], "top_banner_slides": [], "you_will_like_section": [] }</value>
+    </entry>
+</defaultsMap>
