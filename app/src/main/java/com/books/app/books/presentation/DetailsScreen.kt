@@ -327,12 +327,11 @@ fun BookDetails(
             recommendedBooks = recommendedBooks,
             onBookClick = onBookClick
         )
-        Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = { },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp)
+                .padding(horizontal = 32.dp, vertical = 16.dp)
                 .height(48.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xffDD48A1)

@@ -19,7 +19,10 @@ fun NavGraph(modifier: Modifier = Modifier, navController: NavHostController) {
     val booksViewModel: BooksViewModel = hiltViewModel()
     val booksState = booksViewModel.library.collectAsState()
 
-    NavHost(navController = navController, startDestination = NavRoute.SplashScreen) {
+    NavHost(
+        navController = navController,
+        startDestination = NavRoute.SplashScreen
+    ) {
         composable<NavRoute.SplashScreen> {
             SplashScreen(
                 modifier = modifier,
